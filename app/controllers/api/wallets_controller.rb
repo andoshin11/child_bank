@@ -3,7 +3,7 @@ class Api::WalletsController < ApplicationController
   before_action :set_wallet, only: [:show]
 
   def show
-    render json: { wallet: @wallet }
+    render json: { data: @wallet }
   rescue
     render json: { error: 'delete failed' }, status: 422
   end
