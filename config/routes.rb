@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get '/api/transactions/history/:id' => 'api/transactions#history'
+  get '/api/transactions/history/' => 'api/transactions#history_all'
 
   namespace :api, defaults: { format: :json } do
     resources :transactions, only: [] do
