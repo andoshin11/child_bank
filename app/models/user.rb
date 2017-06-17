@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
   #         :recoverable, :rememberable, :trackable, :validatable,
           # :confirmable, :omniauthable
   include DeviseTokenAuth::Concerns::User
+  has_one :wallet, dependent: :destroy, inverse_of: :user
+
+  after_create :create_wallet
+
+  private
+    def create_wallet
+      Wallet.create(user_id: self.id)
+    end
 end
