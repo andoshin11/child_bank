@@ -3,7 +3,7 @@
 module Api
   module Auth
     class RegistrationsController < DeviseTokenAuth::RegistrationsController
-      protect_from_forgery :except => [:create]
+      protect_from_forgery with: :null_session
 
       private
       # :company( 企業名 )を追加できるようにpravateメソッドに修正を加える
