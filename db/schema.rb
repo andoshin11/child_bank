@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170617070238) do
+ActiveRecord::Schema.define(version: 20170617071349) do
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170617070238) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "point"
     t.index ["user_id"], name: "index_wallets_on_user_id"
   end
 
