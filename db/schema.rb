@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170617071349) do
+ActiveRecord::Schema.define(version: 20170617080809) do
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "transaction_id"
+    t.integer "parent_id", null: false
+    t.integer "child_id", null: false
+    t.integer "amount", null: false
+    t.integer "category", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_transactions_on_child_id"
+    t.index ["parent_id"], name: "index_transactions_on_parent_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -40,7 +52,7 @@ ActiveRecord::Schema.define(version: 20170617071349) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "point"
+    t.integer "point", default: 0
     t.index ["user_id"], name: "index_wallets_on_user_id"
   end
 
