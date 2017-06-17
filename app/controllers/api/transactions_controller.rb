@@ -13,7 +13,7 @@ class Api::TransactionsController < ApplicationController
   end
 
   def history
-    user_id = params[:userId]
+    user_id = params[:id]
     users = User.all
 
     transactions = Transaction.where("(child_id = ?) OR (parent_id = ?)", user_id, user_id)
