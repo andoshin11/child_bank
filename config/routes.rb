@@ -7,6 +7,11 @@ Rails.application.routes.draw do
         get :history
       end
     end
+    resources :wallets, only: [] do
+      member do
+        get :show
+      end
+    end
     mount_devise_token_auth_for 'User', at: 'auth', controllers: {
         registrations: 'api/auth/registrations'
     }
