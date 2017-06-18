@@ -48,7 +48,7 @@ class Api::TransactionsController < ApplicationController
       }
     end
 
-    render json: { data: @history }
+    render json: { data: @history.reverse }
   rescue
     render json: { error: 'delete failed' }, status: 422
   end
@@ -56,7 +56,7 @@ class Api::TransactionsController < ApplicationController
   def history_all
     transactions = Transaction.all
 
-    render json: { data: transactions }
+    render json: { data: transactions.reverse }
   rescue
     render json: { error: 'delete failed' }, status: 422
   end

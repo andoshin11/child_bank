@@ -5,10 +5,17 @@ json.users do
       :id, :name, :email
     )
     json.wallet do
-      json.(
-        user.wallet,
-        :id, :point
-      )
+      if user.wallet.present?
+        json.(
+          user.wallet,
+          :id, :point
+        )
+      else
+        json.(
+          Wallet.new,
+          :id, :point
+        )
+      end
     end
   end
 end
