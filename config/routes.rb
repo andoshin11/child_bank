@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       collection do
         post :execute
         post :charge
+        post :exchange
         # get :history
       end
     end

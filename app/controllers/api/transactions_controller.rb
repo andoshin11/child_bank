@@ -23,6 +23,16 @@ class Api::TransactionsController < ApplicationController
     render json: { error: 'delete failed' }, status: 422
   end
 
+  def exchange
+    parent_id = params[:parentId]
+    amount = params[:amount]
+
+    Transaction.exchange(parent_id, amount)
+    render json: { message: "Success" }
+  rescue
+    render json: { error: 'delete failed' }, status: 422
+  end
+
   def history
     user_id = params[:id]
     users = User.all
