@@ -41,7 +41,7 @@ class Api::TransactionsController < ApplicationController
 
 
     @history = transactions.map do |transaction|
-      target_user_id = transaction.category == 0 ? transaction.parent_id : transaction.child_id
+      target_user_id = transaction.category == 0 ? transaction.child_id : transaction.parent_id
       {
         transaction: transaction,
         target_user: users.find(target_user_id)
