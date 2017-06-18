@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       # get '/history/:id', to: 'transactions#history'
       collection do
         post :execute
+        post :charge
         # get :history
       end
     end

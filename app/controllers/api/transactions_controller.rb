@@ -12,6 +12,17 @@ class Api::TransactionsController < ApplicationController
     render json: { error: 'delete failed' }, status: 422
   end
 
+  def charge
+    parent_id = params[:parentId]
+    child_id = params[:childId]
+    amount = params[:amount]
+
+    Transaction.charge(parent_id, child_id, amount)
+    render json: { message: "Success" }
+  rescue
+    render json: { error: 'delete failed' }, status: 422
+  end
+
   def history
     user_id = params[:id]
     users = User.all
